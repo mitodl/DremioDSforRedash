@@ -67,6 +67,7 @@ except ImportError:
     enabled = False
 
 class DremioODBC(BaseSQLQueryRunner):
+    should_annotate_query = False
     noop_query = "SELECT 1"
 
     @classmethod
@@ -119,10 +120,6 @@ class DremioODBC(BaseSQLQueryRunner):
     @classmethod
     def type(cls):
         return "dremio_odbc"
-
-    @classmethod
-    def annotate_query(cls):
-        return False
 
     def __init__(self, configuration):
         super(DremioODBC, self).__init__(configuration)
